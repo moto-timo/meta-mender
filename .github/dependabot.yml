@@ -47,4 +47,8 @@ updates:
     schedule:
       interval: weekly
     target-branch: "hardknott"
+    package-ecosystem: gitsubmodule
+    schedule:
+      interval: weekly
+    target-branch: "honister"
 

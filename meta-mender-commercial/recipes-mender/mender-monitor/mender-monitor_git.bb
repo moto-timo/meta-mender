@@ -21,7 +21,7 @@ def mender_monitor_srcrev_from_src_uri(d, src_uri):
         filenames = glob.glob(src_uri_glob)
         if len(filenames) == 0:
             bb.error("Failed to find mender monitor on path %s" % src_uri_glob)
-            bb.error("Please make sure SRC_URI_pn-mender-monitor is pointing to the downloaded tarball ")
+            bb.error("Please make sure SRC_URI:pn-mender-monitor is pointing to the downloaded tarball ")
         elif len(filenames) != 1:
             bb.error("Expected exactly one file, found: %s" % filenames)
         filename = os.path.basename(filenames[0])

@@ -1,6 +1,6 @@
 
 [tool.black]
-target-version = ['py38']
+target-version = ['py39']
 include = '.*/tests/acceptance/.*\.py$' # Match all Python files in the acceptance tests
 exclude = '''
 (

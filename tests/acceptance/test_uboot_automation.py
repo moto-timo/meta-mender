@@ -194,7 +194,7 @@ class TestUbootAutomation:
         print(msg)
         pytest.skip(msg)
 
-    def board_is_arm(self, srcdir, config):
+    def board_is:arm(self, srcdir, config):
         if config in ["xilinx_versal_virt_defconfig"]:
             # u-boot-v2019.01: There is some weird infinite loop in the conf
             # script of this particular board. Just mark it as "not ARM", which
@@ -206,9 +206,9 @@ class TestUbootAutomation:
         with open(os.path.join(srcdir, ".config")) as fd:
             content = fd.read()
             # No ARM64 support at the moment.
-            is_arm = "CONFIG_ARM=y\n" in content and "CONFIG_ARM64=y\n" not in content
-            print("%s is %s" % (config, "ARM" if is_arm else "not ARM"))
-            return is_arm
+            is:arm = "CONFIG_ARM=y\n" in content and "CONFIG_ARM64=y\n" not in content
+            print("%s is %s" % (config, "ARM" if is:arm else "not ARM"))
+            return is:arm
 
     def collect_and_prepare_boards_to_test(self, bitbake_variables, env):
         # Find all the boards we need to test for the configuration in question.
@@ -227,7 +227,7 @@ class TestUbootAutomation:
                 if not config.endswith("_defconfig"):
                     continue
 
-                if not self.board_is_arm(tmpdir, config):
+                if not self.board_is:arm(tmpdir, config):
                     continue
 
                 mtdids = None
@@ -429,7 +429,7 @@ class TestUbootAutomation:
                 prepared_test_build["build_dir"],
                 prepared_test_build["bitbake_corebase"],
                 bitbake_image,
-                ['MENDER_UBOOT_AUTO_CONFIGURE_pn-u-boot = "0"'],
+                ['MENDER_UBOOT_AUTO_CONFIGURE:pn-u-boot = "0"'],
                 capture=True,
             )
 
@@ -493,8 +493,8 @@ class TestUbootAutomation:
                 prepared_test_build["bitbake_corebase"],
                 bitbake_image,
                 [
-                    'MENDER_UBOOT_AUTO_CONFIGURE_pn-u-boot = "0"',
-                    'TEST_SRC_URI_APPEND_pn-u-boot = " file://%s"'
+                    'MENDER_UBOOT_AUTO_CONFIGURE:pn-u-boot = "0"',
+                    'TEST_SRC_URI_APPEND:pn-u-boot = " file://%s"'
                     % os.path.basename(new_patch_name),
                 ],
                 target="-c clean u-boot",
@@ -577,8 +577,8 @@ class TestUbootAutomation:
                 prepared_test_build["bitbake_corebase"],
                 bitbake_image,
                 [
-                    'MENDER_UBOOT_AUTO_CONFIGURE_pn-u-boot = "0"',
-                    'TEST_SRC_URI_APPEND_pn-u-boot = " file://%s"'
+                    'MENDER_UBOOT_AUTO_CONFIGURE:pn-u-boot = "0"',
+                    'TEST_SRC_URI_APPEND:pn-u-boot = " file://%s"'
                     % os.path.basename(new_patch_name),
                 ],
                 target="-c clean u-boot",
